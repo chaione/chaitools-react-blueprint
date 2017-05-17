@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
-import { Base } from './Base'
+import Base from './Base'
 import { AppContainer } from 'react-hot-loader'
 
 const $rootEl = document.getElementById("root")
@@ -17,5 +17,5 @@ const render = (Component: any) => {
 render(Base)
 
 if (module.hot) {
-  module.hot.accept('./Base', () => { render(require('./Base').Base) })
+  module.hot.accept('./Base', () => { render(require('./Base').default ) })
 }

@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack')
 const { resolve } = require('path')
+const { TsConfigPathsPlugin } = require('awesome-typescript-loader')
 
 module.exports = {
   context: resolve(__dirname, 'src'),
@@ -28,7 +29,7 @@ module.exports = {
   devtool: 'inline-source-map',
 
   resolve: {
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
 
   module: {
@@ -49,6 +50,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
+    new TsConfigPathsPlugin(),
 
     // new webpack.LoaderOptionsPlugin({
     //   postcss: [ autoprefixer, precss ]
