@@ -1,16 +1,23 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
-import Base from './Base'
-import { AppContainer } from 'react-hot-loader'
+import { persistStore } from 'redux-persist'
+import { Provider } from 'react-redux'
 
-const $rootEl = document.getElementById("root")
+import { AppContainer } from 'react-hot-loader'
+import Base from './Base'
+
+import configureStore from './configureStore'
+const store = configureStore()
+
 const render = (Component: any) => {
   ReactDOM.render(
     <AppContainer>
-      <Component />
+      <Provider store={store}>
+        <Component />
+      </Provider>
     </AppContainer>,
-    $rootEl
+    document.getElementById("root")
   )
 }
 

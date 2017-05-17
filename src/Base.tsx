@@ -6,11 +6,13 @@ import {
   Link
 } from 'react-router-dom'
 
+import BaseContainer from './containers/BaseContainer'
+
 import Landing from './components/Landing'
 import Products from './components/Products'
 import About from './components/About'
 
-export default class Base extends React.Component<any, undefined> {
+class Base extends React.Component<any, undefined> {
   render () {
     return (
       <Router>
@@ -31,3 +33,5 @@ export default class Base extends React.Component<any, undefined> {
     )
   }
 }
+
+export default BaseContainer(Base)

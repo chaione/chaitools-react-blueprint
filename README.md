@@ -2,7 +2,8 @@
 
 ## Tech Stacks
 * React
-* Typescript
+* TypeScript
 * Webpack 2
 * React Router 4
 * Redux
+* Sass
