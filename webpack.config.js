@@ -1,9 +1,28 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack')
+const { resolve } = require('path')
+
 module.exports = {
-  entry: './src/index.tsx',
+  context: resolve(__dirname, 'src'),
 
   output: {
+    path: resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    path: __dirname + '/dist'
+    publicPath: '/',
+  },
+
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    './app.tsx'
+  ],
+
+  devServer: {
+    hot: true,
+    contentBase: resolve(__dirname, 'src'),
+    historyApiFallback: true,
+    publicPath: '/',
   },
 
   devtool: 'inline-source-map',
@@ -16,7 +35,7 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader',
+        loaders: ['react-hot-loader/webpack', 'awesome-typescript-loader'],
         exclude: /node_modules/
       },
       {
@@ -25,6 +44,23 @@ module.exports = {
         use: "source-map-loader"
       }
     ]
-  }
+  },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+
+    // new webpack.LoaderOptionsPlugin({
+    //   postcss: [ autoprefixer, precss ]
+    // }),
+
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development')
+    }),
+
+    new HtmlWebpackPlugin({
+      template: 'index.html'
+    })
+  ]
 }
 
