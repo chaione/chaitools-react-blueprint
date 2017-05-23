@@ -4,10 +4,10 @@ const { resolve } = require('path')
 const { TsConfigPathsPlugin } = require('awesome-typescript-loader')
 
 var basicConfigs = {
-  context: resolve(__dirname, '../../', 'src'),
+  context: resolve(__dirname, '../../src'),
 
   output: {
-    path: resolve(__dirname, 'dist'),
+    path: resolve(__dirname, '../../dist'),
     filename: 'bundle.js',
     publicPath: '/',
   },

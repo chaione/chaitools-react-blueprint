@@ -9,9 +9,9 @@
     * [Node.js and Yarn]()
     * [React with Redux](#markdown-header-react-with-redux)
     * [TypeScript and ES6+](#markdown-header-typescript)
-    * [React Router](#markdown-header-react-router)
+    * [React Router 4](#markdown-header-react-router)
     * [Styling with Sass](#markdown-header-styling-with-sass)
-    * [Webpack](#markdown-header-webpack)
+    * [Webpack 2](#markdown-header-webpack)
     * [ESLint](#markdown-header-eslint)
   1. [Receipts](#markdown-header-receipts)
     * Configure Docker build workflow
@@ -60,9 +60,13 @@ developers to be able to inspect and manipulate the store right from the develop
 TypeScript is the new standard for all future ChaiOne front-end projects. But it's not mandatory.
 If you have particular requirements or project needs, ES6 or beyond is still supported in this template through Babel.
 
+### Webpack 2
+
+Webpack is the build tool we use to compiling and packing the application. The configuration files can be found at `configs/webpack`.
+
 ### Styling with Sass
 
-Sass is the default styling choices. We follow the widely used 7-1 pattern in most cases.
+Sass is the default styling choices. We follow the widely used 7-1 pattern in most cases. A complete Sass guideline can be found [here](https://sass-guidelin.es).
 
 On top of Sass, React has made the inline class name changes very easy. With the combination of [classnames](https://github.com/JedWatson/classnames) packages,
 we can easily add or remove classes based on a component's state or a system state.
@@ -96,6 +100,9 @@ export default class extends React.Component {
 }
 
 ```
+
+For a better demonstration of how traditional Sass 7-1 pattern works with React's ability
+to change classnames in the JS level, here's a complete [reading](http://hugogiraudel.com/2015/06/18/styling-react-components-in-sass/).
 
 ### Webpack
 
