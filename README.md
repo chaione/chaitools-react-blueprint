@@ -6,6 +6,7 @@
     * Setup
     * Common Tasks
   1. [Tech Stacks](#markdown-header-tech-stacks)
+    * [Node.js and Yarn]()
     * [React with Redux](#markdown-header-react-with-redux)
     * [TypeScript and ES6+](#markdown-header-typescript)
     * [React Router](#markdown-header-react-router)
@@ -41,6 +42,10 @@ yarn start
 
 
 ## Tech Stacks
+
+### Node.js and Yarn
+
+Node.js 6.10.3 LTS and Yarn 0.24.5 is our build environment. NVM is recommended for managing multiple Node.js versions similar to chruby or rvm on Ruby side.
 
 ### React with Redux
 

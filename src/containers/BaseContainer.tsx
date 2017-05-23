@@ -4,14 +4,14 @@ import {
   increaseCounter,
 } from '../actions'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   return {
     user: state.user,
     system: state.system
   }
 }
 
-export default (component) => connect(
+export default (component: any) => connect(
   mapStateToProps, {
     onUpdateUserinfo: updateUserInfo,
     onIncreaseCounter: increaseCounter
