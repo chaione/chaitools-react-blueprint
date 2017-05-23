@@ -6,9 +6,13 @@
   "author": "Yujing Zheng <yujingz@me.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
-    "define": "typings install --save -ambient react",
-    "start": "webpack-dev-server --progress --colors"
+    "start": "webpack-dev-server --config configs/webpack/dev.js --progress --colors",
+    "build": "webpack --config configs/webpack/dev.js",
+    "build:staging": "NODE_ENV=stagin webpack --config configs/webpack/staging.js",
+    "build:production": "NODE_ENV=production webpack --config configs/webpack/production.js",
+    "docker:build": "docker build -t chaione/project:tag --config config/webpack/Dockerfile .",
+    "docker:build:production": "docker build -t chaione/project:tag --config config/webpack/Dockerfile.production .",
+    "test": "jest"
   },
   "dependencies": {
     "@types/react-redux": "^4.4.40",
