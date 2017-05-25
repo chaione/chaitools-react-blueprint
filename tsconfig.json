@@ -8,7 +8,10 @@
     "removeComments": true,
     "target": "ES5",
     "sourceMap": true,
-    "baseUrl": "./src"
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"]
+    }
   },
   "include": [
     "./src/**/*"

@@ -1,0 +1,14 @@
+.page-landing {
+  .top-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background-color: green;
+
+    img {
+      height: 25px;
+      margin-right: 25px;
+    }
+  }
+}

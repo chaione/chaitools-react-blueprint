@@ -12,6 +12,8 @@ import Landing from './components/Landing'
 import Products from './components/Products'
 import About from './components/About'
 
+require('styles/app.scss')
+
 class Base extends React.Component<any, undefined> {
   render () {
     return (

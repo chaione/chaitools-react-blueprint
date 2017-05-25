@@ -1,7 +1,24 @@
 const webpack = require('webpack')
 const basicConfigs = require('./base')
+const { resolve } = require('path')
 
-const devConfigs = {}
+const devConfigs = {
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    './app.tsx'
+  ],
+
+  devServer: {
+    hot: true,
+    contentBase: resolve(__dirname, 'src'),
+    historyApiFallback: true,
+    publicPath: '/',
+  },
+
+  devtool: 'inline-source-map',
+}
 const devPlugins = [
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NamedModulesPlugin(),
@@ -14,6 +31,4 @@ const devPlugins = [
 let configs = Object.assign({}, basicConfigs, devConfigs)
 configs.plugins = configs.plugins.concat(devPlugins)
 
-console.log('Dev configs')
-console.log(configs.plugins)
 module.exports = configs

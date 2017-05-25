@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack')
 const { resolve } = require('path')
-const { TsConfigPathsPlugin } = require('awesome-typescript-loader')
 
 var basicConfigs = {
   context: resolve(__dirname, '../../src'),
@@ -12,24 +11,9 @@ var basicConfigs = {
     publicPath: '/',
   },
 
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    './app.tsx'
-  ],
-
-  devServer: {
-    hot: true,
-    contentBase: resolve(__dirname, 'src'),
-    historyApiFallback: true,
-    publicPath: '/',
-  },
-
-  devtool: 'inline-source-map',
-
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    modules: [resolve(__dirname, '../../src'), 'node_modules']
   },
 
   module: {
@@ -61,19 +45,17 @@ var basicConfigs = {
         ]
       },
       {
-        test: /\.(png|jpg|svg)$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 1024
-          }
-        }
-      }
+        test: /\.(jpg|png|svg)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 25000,
+          name: '[name].[ext]',
+        },
+      },
     ]
   },
 
   plugins: [
-    new TsConfigPathsPlugin(),
     new HtmlWebpackPlugin({
       template: 'index.html'
     })
