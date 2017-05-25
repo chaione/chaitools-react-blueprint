@@ -43,23 +43,37 @@ var basicConfigs = {
         enforce: 'pre',
         test: /\.tsx?$/,
         use: "source-map-loader"
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader', options: { sourceMap: true }  },
+          { loader: 'css-loader', options: { sourceMap: true } }
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          { loader: 'style-loader', options: { sourceMap: true }  },
+          { loader: 'css-loader',     options: { sourceMap: true } },
+          { loader: 'postcss-loader', options: { sourceMap: true } },
+          { loader: 'sass-loader',    options: { sourceMap: true } }
+        ]
+      },
+      {
+        test: /\.(png|jpg|svg)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 1024
+          }
+        }
       }
     ]
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
     new TsConfigPathsPlugin(),
-
-    // new webpack.LoaderOptionsPlugin({
-    //   postcss: [ autoprefixer, precss ]
-    // }),
-
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    }),
-
     new HtmlWebpackPlugin({
       template: 'index.html'
     })
