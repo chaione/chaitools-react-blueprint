@@ -8,7 +8,7 @@ import { AppContainer } from 'react-hot-loader'
 import Base from './Base'
 
 import configureStore from './configureStore'
-const store = configureStore()
+const { store } = configureStore()
 
 const render = (Component: any) => {
   ReactDOM.render(
@@ -24,5 +24,5 @@ const render = (Component: any) => {
 render(Base)
 
 if (module.hot) {
-  module.hot.accept('./Base', () => { render(require('./Base').default ) })
+  module.hot.accept('./Base', () => { render(require('./Base').default) })
 }
