@@ -18,6 +18,7 @@ app.use(compression())
 app.use(express.static(__dirname + '/', { maxAge: ONE_DAY }))
 
 app.get('*', function (request, response) {
+  console.log('path: ', path.resolve(__dirname, 'index.html'))
   response.sendFile(path.resolve(__dirname, 'index.html'))
 })
 

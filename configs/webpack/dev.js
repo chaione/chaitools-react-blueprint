@@ -2,9 +2,10 @@ const webpack = require('webpack')
 const basicConfigs = require('./base')
 const { resolve } = require('path')
 
+console.log('source: ', resolve(__dirname, '../../src'))
 const devConfigs = {
   entry: [
-    'react-hot-loader/patch',
+    'react-hot-loader/babel',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
     './app.tsx'
@@ -12,7 +13,7 @@ const devConfigs = {
 
   devServer: {
     hot: true,
-    contentBase: resolve(__dirname, 'src'),
+    contentBase: resolve(__dirname, '../../src'),
     historyApiFallback: true,
     publicPath: '/',
   },

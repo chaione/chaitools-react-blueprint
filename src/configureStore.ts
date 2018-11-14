@@ -1,28 +1,39 @@
-import {createStore, applyMiddleware, compose} from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import {autoRehydrate} from 'redux-persist'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
 import reducer from './reducers'
 
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, reducer)
+
+
 const configureStore = () => {
   if (process.env.NODE_ENV === 'development') {
-    return createStore(
-      reducer,
+    const store = createStore(
+      persistedReducer,
       composeWithDevTools(
         applyMiddleware(thunk),
-        autoRehydrate()
       )
     )
+    const persitedStore = persistStore(store)
+    return { store, persitedStore }
   }
 
-  return createStore(
-    reducer,
+  const store = createStore(
+    persistedReducer,
     compose(
       applyMiddleware(thunk),
-      autoRehydrate()
     )
   )
+  const persitedStore = persistStore(store)
+  return { store, persitedStore }
 }
 
 export default configureStore

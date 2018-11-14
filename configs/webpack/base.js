@@ -2,8 +2,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack')
 const { resolve } = require('path')
 
+const srcRoot = resolve(__dirname, '../../src');
+
 var basicConfigs = {
-  context: resolve(__dirname, '../../src'),
+  context: srcRoot,
 
   output: {
     path: resolve(__dirname, '../../dist'),
@@ -19,8 +21,8 @@ var basicConfigs = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        loaders: ['react-hot-loader/webpack', 'awesome-typescript-loader'],
+        test: /\.(tsx|ts)?$/,
+        loaders: ['awesome-typescript-loader'],
         exclude: /node_modules/
       },
       {
@@ -31,17 +33,17 @@ var basicConfigs = {
       {
         test: /\.css$/,
         use: [
-          { loader: 'style-loader', options: { sourceMap: true }  },
+          { loader: 'style-loader', options: { sourceMap: true } },
           { loader: 'css-loader', options: { sourceMap: true } }
         ]
       },
       {
         test: /\.scss$/,
         use: [
-          { loader: 'style-loader', options: { sourceMap: true }  },
-          { loader: 'css-loader',     options: { sourceMap: true } },
+          { loader: 'style-loader', options: { sourceMap: true } },
+          { loader: 'css-loader', options: { sourceMap: true } },
           { loader: 'postcss-loader', options: { sourceMap: true } },
-          { loader: 'sass-loader',    options: { sourceMap: true } }
+          { loader: 'sass-loader', options: { sourceMap: true } }
         ]
       },
       {
@@ -57,7 +59,8 @@ var basicConfigs = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      template: '../src/index.html',
+      chunksSortMode: 'dependency'
     })
   ]
 }
